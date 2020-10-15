@@ -1,0 +1,18 @@
+
+   [
+    {
+      "MinAmount": 1,
+      "MaxAmount": 5000,
+      "FeeAmount": 10
+    },
+    {
+      "MinAmount": 5001,
+      "MaxAmount": 50000,
+      "FeeAmount": 25
+    },
+    {
+      "MinAmount": 50001,
+      "MaxAmount": 999999999,
+      "FeeAmount": 50
+    }
+  ]
