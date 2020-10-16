@@ -8,28 +8,27 @@ namespace TransactionFeeCalculator
     {
         private readonly long _amount;
 
-        public ReadFile(long Amount)
+        public ReadFile(long amount)
         {
-            _amount = Amount;
+            _amount = amount;
         }
         public TransactionDetails Calculatefee()
         {
             int charge = 0;
             long TotalAmount = 0;
-            var amount = _amount;
 
             var transaction = File.ReadAllText(@"C:\Users\ayobami.omosehin\Documents\TransactionFeeCalculator\Data\chargeFee.Json");
             dynamic transactionData = JsonConvert.DeserializeObject<List<TransactionFee>>(transaction);
             foreach (var item in transactionData)
             {
-                if(amount> item.MinAmount && amount < item.MaxAmount)
+                if(_amount> item.MinAmount && _amount < item.MaxAmount)
                 {
-                    TotalAmount = amount + item.FeeAmount;
+                    TotalAmount = _amount + item.FeeAmount;
                     charge = item.FeeAmount;
                 }
             }
 
-            return new TransactionDetails { AmountSending = amount, TotalAmount = TotalAmount, TransferCharge = charge };
+            return new TransactionDetails { AmountSending = _amount, TotalAmount = TotalAmount, TransferCharge = charge };
         }
 
     }
