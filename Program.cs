@@ -11,6 +11,12 @@ namespace TransactionFeeCalculator
             long value;
             if (long.TryParse(inputValue, out value))
             {
+                if (value == 0)
+                {
+                    Console.WriteLine("You cannot transfer 0");
+                    return;
+                        }
+
                 ReadFile read = new ReadFile(value);
                 var res = read.Calculatefee();
                 Console.WriteLine($"N{String.Format("{0:n}", res.TotalAmount)} will be deducted from your account for sending N{String.Format("{0:n}", res.AmountSending)} with charge of N{res.TransferCharge} ");
