@@ -21,7 +21,7 @@ namespace TransactionFeeCalculator
             dynamic transactionData = JsonConvert.DeserializeObject<List<TransactionFee>>(transaction);
             foreach (var item in transactionData)
             {
-                if(_amount> item.MinAmount && _amount < item.MaxAmount)
+                if(_amount>= item.MinAmount && _amount <= item.MaxAmount)
                 {
                     TotalAmount = _amount + item.FeeAmount;
                     charge = item.FeeAmount;
